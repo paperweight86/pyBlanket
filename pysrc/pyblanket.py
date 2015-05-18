@@ -6,14 +6,45 @@
 """
 
 import json, pprint, pystache
+import pyclump
+
+class Transform:
+	
+	def __init__(self):
+		self.stuff = None
+
+	def Transform( self, input ):
+		pass
+
+class Pipeline:
+
+	def __init__(self):
+
+		self.steps = []
+
+	def AddStep( self, step ):
+
+		self.steps.push_back(step)
+
+	def ClearSteps( self ):
+
+		self.steps = []
+
+	def ExecuteSteps( self ):
+
+		for step in self.steps:
+			step.Transform(output)
+
+
+dumpPath = r'C:\Projects\dump.json'
+projPath = r'C:\Projects\oldstructure\src\tod\Tod.vcxproj'
+namespaces = ['tod']
+pyclump.DumpAST(projPath, namespaces, dumpPath)
 
 f = open(r'C:\Projects\dump.json', 'r')
 data = f.read()
 meta = json.loads(data)
 f.close()
-
-first = meta[0]
-pprint.pprint(first)
 
 # TODO: transform dump.json into dump.cppcli.json into dump.<class>.h/dump.<class>.cpp/dump.csproj/dump.sln
 for clas in meta:
@@ -23,20 +54,13 @@ for clas in meta:
 	elif clas['subtype'] == 'class':
 		clas['subtype'] = 'ref class'
 
-template = """
-#pragma unmanaged
-#include "{{filepath}}"
-#pragma managed
+	clas['projectname'] = 'tod'
 
-namespace Dump.Wrapper
-{
-	public {{subtype}} {{name}}
-	{
-		
-	}
-}
+f = open(r'..\templates\cppcli.pst', 'r')
+template = f.read()
+f.close()
 
-"""
+outputFolder = "..\examples\tod"
 
 for clas in meta:
 	print pystache.render(template, clas)

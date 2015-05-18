@@ -1,0 +1,11 @@
+#pragma unmanaged
+#include "{{filepath}}"
+#pragma managed
+
+namespace {{projectname}}.Wrapper
+{
+	public {{subtype}} {{name}}
+	{
+		
+	}
+}

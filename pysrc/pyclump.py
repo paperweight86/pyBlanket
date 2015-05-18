@@ -164,25 +164,6 @@ def show_types(parentNode, node, curLevel):
 
     curLevel.pop()
 
-projPath = r'C:\Projects\src\tod\Tod.vcxproj'
-
-projTree = ET.parse(projPath)
-
-compiled = projTree.findall('.//{http://schemas.microsoft.com/developer/msbuild/2003}ClCompile')
-included = projTree.findall('.//{http://schemas.microsoft.com/developer/msbuild/2003}ClInclude')
-incDirs = projTree.findall('.//{http://schemas.microsoft.com/developer/msbuild/2003}AdditionalIncludeDirectories')
-
-uniqueIncDirs = []
-for includeDir in incDirs:
-    newIncs = includeDir.text.split(';')
-    for incPath in newIncs:
-        if not incPath in uniqueIncDirs and incPath != ".\\":
-            uniqueIncDirs.append(incPath)
-
-basePath = os.path.dirname(projPath)
-
-searchDirs = [os.path.realpath(os.path.join(basePath, x)) for x in uniqueIncDirs]
-
 def getFilesWithExtension(dir, exts):
     files = []
     for dirname, dirnames, filenames in os.walk(dir):
@@ -190,32 +171,63 @@ def getFilesWithExtension(dir, exts):
             files.append(os.path.join(dirname, filename))
     return files
 
-files = []
-for searchDir in searchDirs:
-    files += getFilesWithExtension(searchDir, ['.cpp','.h', '.hpp'])
+def GetIncludeDirsFromVCProj( projPath ):
 
-compiled = [os.path.realpath(os.path.join(basePath,x.get('Include'))) for x in compiled if not x.get('Include') is None]
-included = [os.path.realpath(os.path.join(basePath,x.get('Include'))) for x in included if not x.get('Include') is None]
+    projTree = ET.parse(projPath)
 
-missingfiles = []
-missingfiles += [x for x in compiled if not os.path.exists(x)]
-missingfiles += [x for x in included if not os.path.exists(x)]
+    compiled = projTree.findall('.//{http://schemas.microsoft.com/developer/msbuild/2003}ClCompile')
+    included = projTree.findall('.//{http://schemas.microsoft.com/developer/msbuild/2003}ClInclude')
+    incDirs = projTree.findall('.//{http://schemas.microsoft.com/developer/msbuild/2003}AdditionalIncludeDirectories')
 
-global NAMESPACE_FILTER
-NAMESPACE_FILTER = ['tod']
+    uniqueIncDirs = []
+    for includeDir in incDirs:
+        newIncs = includeDir.text.split(';')
+        for incPath in newIncs:
+            if not incPath in uniqueIncDirs and incPath != ".\\":
+                uniqueIncDirs.append(incPath)
 
-if missingfiles:
-    print "Some files are missing:\n" + "\n".join(missingfiles)
-    exit(1)
+    basePath = os.path.dirname(projPath)
 
-allFiles = list(set(compiled + included + files))
-index = cindex.Index.create()
-for cppfile in allFiles:
-    tu = index.parse(cppfile, args=['-x', 'c++'])
-    #print 'Reading', tu.spelling
-    #find_typerefs(tu.cursor, 'Person')
-    show_types(None, tu.cursor, [])
+    searchDirs = [os.path.realpath(os.path.join(basePath, x)) for x in uniqueIncDirs]
 
-f = open(r'C:\Projects\dump.json', 'w')
-f.writelines(json.dumps(INDEX, sort_keys=True, indent=1))
-f.close()
+    files = []
+    for searchDir in searchDirs:
+        files += getFilesWithExtension(searchDir, ['.cpp','.h', '.hpp'])
+
+    #compiled = [os.path.realpath(os.path.join(basePath,x.get('Include'))) for x in compiled if not x.get('Include') is None]
+    included = [os.path.realpath(os.path.join(basePath,x.get('Include'))) for x in included if not x.get('Include') is None]
+
+    return included + files
+
+def CheckForMissingFiles(files):
+
+    missingfiles = []
+    #missingfiles += [x for x in compiled if not os.path.exists(x)]
+    missingfiles += [x for x in included if not os.path.exists(x)]
+
+    if missingfiles:
+        print "Some files are missing:\n" + "\n".join(missingfiles)
+        exit(1)
+
+def GenerateASTDump( files ):
+    allFiles = list(set(files))
+    index = cindex.Index.create()
+    for cppfile in allFiles:
+        tu = index.parse(cppfile, args=['-x', 'c++'])
+        #print 'Reading', tu.spelling
+        #find_typerefs(tu.cursor, 'Person')
+        show_types(None, tu.cursor, [])
+    return index
+
+def DumpAST( inputFile, namespaceFilters, outputFile ):
+    included = GetIncludeDirsFromVCProj(inputFile)
+
+    global NAMESPACE_FILTER
+    NAMESPACE_FILTER = namespaceFilters
+
+    INDEX = []
+    GenerateASTDump( included )
+
+    f = open(outputFile, 'w')
+    f.writelines(json.dumps(INDEX, sort_keys=True, indent=1))
+    f.close()
