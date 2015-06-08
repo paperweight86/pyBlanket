@@ -130,7 +130,8 @@ def show_types(parentNode, node, curLevel):
                 show_types(node, c, curLevel)
 
     elif parentNode is not None and parentNode in EXPORT and node.kind in (cindex.CursorKind.CXX_METHOD,) and node.access_specifier == cindex.AccessSpecifier.PUBLIC:
-        print " > ".join(curLevel) + " > " + node.displayname
+        print " > ".join(curLevel) + " > " + node.result_type.spelling + " " + node.displayname
+        
         if node.is_static_method():
             print "static"
         parameters = []
