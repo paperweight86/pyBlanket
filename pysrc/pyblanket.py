@@ -1,7 +1,7 @@
 """
 	pyBlanket by Paperweight86
 	Version: Prototype 1
-	Description: Takes an AST digest from pyClump and C++ library project then generates 
+	Description: Takes an AST digest from pyClump and C++ library project then generates
 	a wrapper for the given language. Currently only intends to support c#.
 """
 
@@ -9,11 +9,11 @@ import json, pprint, pystache
 import pyclump
 
 class Transform:
-	
-	def __init__(self):
-		self.stuff = None
 
-	def Transform( self, input ):
+	def __init__(self):
+		pass
+
+	def Execute( self ):
 		pass
 
 class Pipeline:
@@ -33,34 +33,43 @@ class Pipeline:
 	def ExecuteSteps( self ):
 
 		for step in self.steps:
-			step.Transform(output)
+			output = step.Execute()
 
+def main():
+	dumpPath = r'.\examples\dump.json'
+	projPath = r'C:\Projects\tod\Tod.vcxproj'
+	namespaces = ['tod']
+	moduleNames = ['cppcli_blanket']
+	modules = map(__import__, moduleNames)
 
-dumpPath = r'C:\Projects\dump.json'
-projPath = r'C:\Projects\oldstructure\src\tod\Tod.vcxproj'
-namespaces = ['tod']
-pyclump.DumpAST(projPath, namespaces, dumpPath)
+	pyclump.DumpAST(projPath, namespaces, dumpPath)
 
-f = open(r'C:\Projects\dump.json', 'r')
-data = f.read()
-meta = json.loads(data)
-f.close()
+	f = open(dumpPath, 'r')
+	data = f.read()
+	meta = json.loads(data)
+	f.close()
 
-# TODO: transform dump.json into dump.cppcli.json into dump.<class>.h/dump.<class>.cpp/dump.csproj/dump.sln
-for clas in meta:
+	a = modules[0].Transform(meta)
+	a.Execute()
 
-	if clas['subtype'] == 'factory':
-		clas['subtype'] = 'static class'
-	elif clas['subtype'] == 'class':
-		clas['subtype'] = 'ref class'
+	# TODO: transform dump.json into dump.cppcli.json into dump.<class>.h/dump.<class>.cpp/dump.csproj/dump.sln
+	for clas in meta:
 
-	clas['projectname'] = 'tod'
+		if clas['subtype'] == 'factory':
+			clas['subtype'] = 'static class'
+		elif clas['subtype'] == 'class':
+			clas['subtype'] = 'ref class'
 
-f = open(r'..\templates\cppcli.pst', 'r')
-template = f.read()
-f.close()
+		clas['projectname'] = 'tod'
 
-outputFolder = "..\examples\tod"
+	f = open(r'.\templates\cppcli.pst', 'r')
+	template = f.read()
+	f.close()
 
-for clas in meta:
-	print pystache.render(template, clas)
+	outputFolder = ".\examples"
+	print meta
+	for clas in meta:
+		print pystache.render(template, clas)
+
+if __name__ == "__main__":
+    main()

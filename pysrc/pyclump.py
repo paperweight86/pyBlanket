@@ -2,8 +2,8 @@
 """
     pyClump by Paperweight86
     Version: Prototype 1
-    Description: A small wrapper for libclang which takes a C++ vs project file for a library 
-    and a given namespace, using the header files generates a json dump of the presumed 
+    Description: A small wrapper for libclang which takes a C++ vs project file for a library
+    and a given namespace, using the header files generates a json dump of the presumed
     exposed classes. Basically a digest of the exposed part of the libs AST.
 """
 
@@ -54,12 +54,12 @@ def type_to_json(ty, typeDict):
         if not typeDict.has_key("spec"):
             typeDict["spec"] = []
         typeDict["spec"].append("constant")
-
+    
     return typeDict
 
 
 def show_types(parentNode, node, curLevel):
-    
+
     curLevel.append(node.displayname)
 
     global NAMESPACE_FILTER
@@ -131,7 +131,7 @@ def show_types(parentNode, node, curLevel):
 
     elif parentNode is not None and parentNode in EXPORT and node.kind in (cindex.CursorKind.CXX_METHOD,) and node.access_specifier == cindex.AccessSpecifier.PUBLIC:
         print " > ".join(curLevel) + " > " + node.result_type.spelling + " " + node.displayname
-        
+
         if node.is_static_method():
             print "static"
         parameters = []
@@ -158,7 +158,7 @@ def show_types(parentNode, node, curLevel):
                 "name": node.displayname,
                 "value": node.enum_value
             })
-    
+
     #else:
     #    print parentNode.spelling
     #    print node.kind
@@ -226,6 +226,7 @@ def DumpAST( inputFile, namespaceFilters, outputFile ):
     global NAMESPACE_FILTER
     NAMESPACE_FILTER = namespaceFilters
 
+    global INDEX
     INDEX = []
     GenerateASTDump( included )
 

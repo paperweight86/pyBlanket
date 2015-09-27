@@ -6,6 +6,8 @@ namespace {{projectname}}.Wrapper
 {
 	public {{subtype}} {{name}}
 	{
-		
+		{{#functions}}
+			{{name}}({{#parameters}}{{#type}}{{type}}{{/type}} {{name}},{{/parameters}})
+		{{/functions}}
 	}
 }
