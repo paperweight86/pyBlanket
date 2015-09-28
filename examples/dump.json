@@ -1,38 +1,6 @@
 [
  {
-  "filepath": "C:\\Projects\\inc\\tod\\Colour.h", 
-  "functions": [], 
-  "name": "SColour", 
-  "properties": [
-   {
-    "name": "r", 
-    "type": {
-     "type": "FLOAT"
-    }
-   }, 
-   {
-    "name": "g", 
-    "type": {
-     "type": "FLOAT"
-    }
-   }, 
-   {
-    "name": "b", 
-    "type": {
-     "type": "FLOAT"
-    }
-   }, 
-   {
-    "name": "a", 
-    "type": {
-     "type": "FLOAT"
-    }
-   }
-  ], 
-  "subtype": "struct"
- }, 
- {
-  "filepath": "C:\\Projects\\inc\\tod\\2DRendererFactory.h", 
+  "filepath": "C:\\Projects\\tod\\inc\\2DRenderers.h", 
   "functions": [], 
   "name": "E2DRenderer", 
   "properties": [
@@ -52,7 +20,570 @@
   "subtype": "enum"
  }, 
  {
-  "filepath": "C:\\Projects\\inc\\tod\\2DRendererFactory.h", 
+  "filepath": "C:\\Projects\\tod\\src\\D2D1Renderer.cpp", 
+  "functions": [
+   {
+    "name": "operator()", 
+    "parameters": [
+     {
+      "name": "col", 
+      "type": {
+       "ref": [
+        "LVALUEREFERENCE"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }
+  ], 
+  "name": "SColourHasher", 
+  "properties": [], 
+  "subtype": "struct"
+ }, 
+ {
+  "filepath": "C:\\Projects\\tod\\src\\D2D1Renderer.cpp", 
+  "functions": [
+   {
+    "name": "Initialise", 
+    "parameters": [
+     {
+      "name": "hwnd", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "width", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "height", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "BOOL"
+    }
+   }, 
+   {
+    "name": "Deinitialise", 
+    "parameters": [], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "SetClearColor", 
+    "parameters": [
+     {
+      "name": "colour", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "Update", 
+    "parameters": [
+     {
+      "name": "dt", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "BeginDraw", 
+    "parameters": [], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "EndDraw", 
+    "parameters": [], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "CreateRectangleGeometry", 
+    "parameters": [
+     {
+      "name": "rect", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "CreateGeometry", 
+    "parameters": [
+     {
+      "name": "vertices", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "vertexCount", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "rect", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "CreateFillGeometry", 
+    "parameters": [
+     {
+      "name": "vertices", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "vertexCount", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "rect", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "CreateEllipseGeometry", 
+    "parameters": [
+     {
+      "name": "pos", 
+      "type": {
+       "ref": [
+        "LVALUEREFERENCE"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "size", 
+      "type": {
+       "ref": [
+        "LVALUEREFERENCE"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "CreateBrush", 
+    "parameters": [
+     {
+      "name": "colour", 
+      "type": {
+       "ref": [
+        "LVALUEREFERENCE"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "CreateBrushCached", 
+    "parameters": [
+     {
+      "name": "colour", 
+      "type": {
+       "ref": [
+        "LVALUEREFERENCE"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "CreateImage", 
+    "parameters": [
+     {
+      "name": "width", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "height", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "data", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "UpdateImage", 
+    "parameters": [
+     {
+      "name": "img", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "width", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "height", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "data", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "UpdateGeometry", 
+    "parameters": [
+     {
+      "name": "geo", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "vertices", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "vertexCount", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "CreateRenderTarget", 
+    "parameters": [
+     {
+      "name": "present", 
+      "type": {
+       "type": "BOOL"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "SetRenderTarget", 
+    "parameters": [
+     {
+      "name": "renderTarget", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "CreateImageFromRenderTarget", 
+    "parameters": [
+     {
+      "name": "hRenderTarget", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "DrawGeometry", 
+    "parameters": [
+     {
+      "name": "hGeometry", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawFillGeometry", 
+    "parameters": [
+     {
+      "name": "hGeometry", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawTextString", 
+    "parameters": [
+     {
+      "name": "string", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "rect", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawBitmap", 
+    "parameters": [
+     {
+      "name": "hBitmap", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "pos", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "scale", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawRectangle", 
+    "parameters": [
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "rect", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "offset", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "scale", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "stroke", 
+      "type": {
+       "type": "FLOAT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "SavePngImage", 
+    "parameters": [
+     {
+      "name": "hRenderTarget", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "BOOL"
+    }
+   }, 
+   {
+    "name": "DestroyResource", 
+    "parameters": [
+     {
+      "name": "hResource", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }
+  ], 
+  "name": "CD2D1Renderer", 
+  "properties": [], 
+  "subtype": "class"
+ }, 
+ {
+  "filepath": "C:\\Projects\\tod\\inc\\Rect.h", 
   "functions": [], 
   "name": "SRect", 
   "properties": [
@@ -84,7 +615,63 @@
   "subtype": "struct"
  }, 
  {
-  "filepath": "C:\\Projects\\inc\\tod\\2DRendererFactory.h", 
+  "filepath": "C:\\Projects\\tod\\inc\\Colour.h", 
+  "functions": [
+   {
+    "name": "operator==", 
+    "parameters": [
+     {
+      "name": "other", 
+      "type": {
+       "ref": [
+        "LVALUEREFERENCE"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "const tod::SColour"
+      }
+     }
+    ], 
+    "type": {
+     "spec": [
+      "constant"
+     ], 
+     "type": "BOOL"
+    }
+   }
+  ], 
+  "name": "SColour", 
+  "properties": [
+   {
+    "name": "r", 
+    "type": {
+     "type": "FLOAT"
+    }
+   }, 
+   {
+    "name": "g", 
+    "type": {
+     "type": "FLOAT"
+    }
+   }, 
+   {
+    "name": "b", 
+    "type": {
+     "type": "FLOAT"
+    }
+   }, 
+   {
+    "name": "a", 
+    "type": {
+     "type": "FLOAT"
+    }
+   }
+  ], 
+  "subtype": "struct"
+ }, 
+ {
+  "filepath": "C:\\Projects\\tod\\inc\\2DRendererFactory.h", 
   "functions": [], 
   "name": "EResourceType", 
   "properties": [
@@ -117,14 +704,18 @@
     "value": 6
    }, 
    {
-    "name": "FORCE_UINT32", 
+    "name": "eResourceType_RenderTarget", 
     "value": 7
+   }, 
+   {
+    "name": "FORCE_UINT32", 
+    "value": 8
    }
   ], 
   "subtype": "enum"
  }, 
  {
-  "filepath": "C:\\Projects\\inc\\tod\\2DRendererFactory.h", 
+  "filepath": "C:\\Projects\\tod\\inc\\2DRendererFactory.h", 
   "functions": [
    {
     "name": "GetType", 
@@ -162,6 +753,20 @@
    {
     "name": "Deinitialise", 
     "parameters": [], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "SetClearColor", 
+    "parameters": [
+     {
+      "name": "colour", 
+      "type": {
+       "type": "tod::SColour"
+      }
+     }
+    ], 
     "type": {
      "type": "VOID"
     }
@@ -360,6 +965,20 @@
     }
    }, 
    {
+    "name": "CreateImageFromRenderTarget", 
+    "parameters": [
+     {
+      "name": "hRenderTarget", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
     "name": "UpdateImage", 
     "parameters": [
      {
@@ -386,6 +1005,66 @@
        "ref": [
         "POINTER"
        ], 
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "UpdateGeometry", 
+    "parameters": [
+     {
+      "name": "geo", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "vertices", 
+      "type": {
+       "ref": [
+        "POINTER"
+       ], 
+       "spec": [
+        "constant"
+       ], 
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "vertexCount", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "CreateRenderTarget", 
+    "parameters": [
+     {
+      "name": "present", 
+      "type": {
+       "type": "BOOL"
+      }
+     }
+    ], 
+    "type": {
+     "type": "INT"
+    }
+   }, 
+   {
+    "name": "SetRenderTarget", 
+    "parameters": [
+     {
+      "name": "renderTarget", 
+      "type": {
        "type": "INT"
       }
      }
@@ -435,32 +1114,6 @@
     }
    }, 
    {
-    "name": "DrawFillGeometry", 
-    "parameters": [
-     {
-      "name": "hGeometry", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "hBrush", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "translation", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
     "name": "DrawTextString", 
     "parameters": [
      {
@@ -468,6 +1121,18 @@
       "type": {
        "type": "INT"
       }
+     }, 
+     {
+      "name": "rect", 
+      "type": {
+       "type": "tod::SRect"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
      }
     ], 
     "type": {
@@ -501,16 +1166,22 @@
     }
    }, 
    {
-    "name": "DrawBitmap", 
+    "name": "DrawRectangle", 
     "parameters": [
      {
-      "name": "hBitmap", 
+      "name": "hBrush", 
       "type": {
        "type": "INT"
       }
      }, 
      {
-      "name": "pos", 
+      "name": "rect", 
+      "type": {
+       "type": "tod::SRect"
+      }
+     }, 
+     {
+      "name": "offset", 
       "type": {
        "type": "INT"
       }
@@ -522,9 +1193,37 @@
       }
      }, 
      {
-      "name": "opacity", 
+      "name": "stroke", 
       "type": {
        "type": "FLOAT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "SavePngImage", 
+    "parameters": [
+     {
+      "name": "hRenderTarget", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "BOOL"
+    }
+   }, 
+   {
+    "name": "DestroyResource", 
+    "parameters": [
+     {
+      "name": "hResource", 
+      "type": {
+       "type": "INT"
       }
      }
     ], 
@@ -538,7 +1237,7 @@
   "subtype": "interface"
  }, 
  {
-  "filepath": "C:\\Projects\\inc\\tod\\2DRendererFactory.h", 
+  "filepath": "C:\\Projects\\tod\\inc\\2DRendererFactory.h", 
   "functions": [
    {
     "name": "Create", 
@@ -568,412 +1267,5 @@
   "name": "C2DRendererFactory", 
   "properties": [], 
   "subtype": "factory"
- }, 
- {
-  "filepath": "C:\\Projects\\src\\tod\\2DRendererFactory.cpp", 
-  "functions": [
-   {
-    "name": "Initialise", 
-    "parameters": [
-     {
-      "name": "hwnd", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "width", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "height", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "BOOL"
-    }
-   }, 
-   {
-    "name": "Deinitialise", 
-    "parameters": [], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "Update", 
-    "parameters": [
-     {
-      "name": "dt", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "BeginDraw", 
-    "parameters": [], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "EndDraw", 
-    "parameters": [], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "CreateRectangleGeometry", 
-    "parameters": [
-     {
-      "name": "rect", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "INT"
-    }
-   }, 
-   {
-    "name": "CreateGeometry", 
-    "parameters": [
-     {
-      "name": "vertices", 
-      "type": {
-       "ref": [
-        "POINTER"
-       ], 
-       "spec": [
-        "constant"
-       ], 
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "vertexCount", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "rect", 
-      "type": {
-       "ref": [
-        "POINTER"
-       ], 
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "INT"
-    }
-   }, 
-   {
-    "name": "CreateFillGeometry", 
-    "parameters": [
-     {
-      "name": "vertices", 
-      "type": {
-       "ref": [
-        "POINTER"
-       ], 
-       "spec": [
-        "constant"
-       ], 
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "vertexCount", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "rect", 
-      "type": {
-       "ref": [
-        "POINTER"
-       ], 
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "INT"
-    }
-   }, 
-   {
-    "name": "CreateEllipseGeometry", 
-    "parameters": [
-     {
-      "name": "pos", 
-      "type": {
-       "ref": [
-        "LVALUEREFERENCE"
-       ], 
-       "spec": [
-        "constant"
-       ], 
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "size", 
-      "type": {
-       "ref": [
-        "LVALUEREFERENCE"
-       ], 
-       "spec": [
-        "constant"
-       ], 
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "INT"
-    }
-   }, 
-   {
-    "name": "CreateBrush", 
-    "parameters": [
-     {
-      "name": "colour", 
-      "type": {
-       "ref": [
-        "LVALUEREFERENCE"
-       ], 
-       "spec": [
-        "constant"
-       ], 
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "INT"
-    }
-   }, 
-   {
-    "name": "CreateImage", 
-    "parameters": [
-     {
-      "name": "width", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "height", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "data", 
-      "type": {
-       "ref": [
-        "POINTER"
-       ], 
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "INT"
-    }
-   }, 
-   {
-    "name": "UpdateImage", 
-    "parameters": [
-     {
-      "name": "img", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "width", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "height", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "data", 
-      "type": {
-       "ref": [
-        "POINTER"
-       ], 
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "DrawGeometry", 
-    "parameters": [
-     {
-      "name": "hGeometry", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "hBrush", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "DrawFillGeometry", 
-    "parameters": [
-     {
-      "name": "hGeometry", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "hBrush", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "DrawFillGeometry", 
-    "parameters": [
-     {
-      "name": "hGeometry", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "hBrush", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "translation", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "DrawTextString", 
-    "parameters": [
-     {
-      "name": "string", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "DrawBitmap", 
-    "parameters": [
-     {
-      "name": "hBitmap", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "pos", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "scale", 
-      "type": {
-       "type": "INT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }, 
-   {
-    "name": "DrawBitmap", 
-    "parameters": [
-     {
-      "name": "hBitmap", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "pos", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "scale", 
-      "type": {
-       "type": "INT"
-      }
-     }, 
-     {
-      "name": "opacity", 
-      "type": {
-       "type": "FLOAT"
-      }
-     }
-    ], 
-    "type": {
-     "type": "VOID"
-    }
-   }
-  ], 
-  "name": "CD2D1Renderer", 
-  "properties": [], 
-  "subtype": "class"
  }
 ]
