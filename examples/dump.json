@@ -440,6 +440,32 @@
     }
    }, 
    {
+    "name": "DrawGeometry", 
+    "parameters": [
+     {
+      "name": "hGeometry", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "translation", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
     "name": "DrawFillGeometry", 
     "parameters": [
      {
@@ -450,6 +476,32 @@
      }, 
      {
       "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawFillGeometry", 
+    "parameters": [
+     {
+      "name": "hGeometry", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "translation", 
       "type": {
        "type": "INT"
       }
@@ -504,6 +556,38 @@
       "name": "scale", 
       "type": {
        "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawBitmap", 
+    "parameters": [
+     {
+      "name": "hBitmap", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "pos", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "scale", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "opacity", 
+      "type": {
+       "type": "FLOAT"
       }
      }
     ], 
@@ -1094,6 +1178,32 @@
     }
    }, 
    {
+    "name": "DrawGeometry", 
+    "parameters": [
+     {
+      "name": "hGeometry", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "translation", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
     "name": "DrawFillGeometry", 
     "parameters": [
      {
@@ -1104,6 +1214,32 @@
      }, 
      {
       "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawFillGeometry", 
+    "parameters": [
+     {
+      "name": "hGeometry", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "hBrush", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "translation", 
       "type": {
        "type": "INT"
       }
@@ -1158,6 +1294,38 @@
       "name": "scale", 
       "type": {
        "type": "INT"
+      }
+     }
+    ], 
+    "type": {
+     "type": "VOID"
+    }
+   }, 
+   {
+    "name": "DrawBitmap", 
+    "parameters": [
+     {
+      "name": "hBitmap", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "pos", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "scale", 
+      "type": {
+       "type": "INT"
+      }
+     }, 
+     {
+      "name": "opacity", 
+      "type": {
+       "type": "FLOAT"
       }
      }
     ], 

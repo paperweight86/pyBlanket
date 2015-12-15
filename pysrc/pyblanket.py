@@ -36,7 +36,7 @@ class Pipeline:
 			output = step.Execute()
 
 def main():
-	dumpPath = r'.\examples\dump.json'
+	dumpPath = r'..\examples\dump.cpp.json'
 	projPath = r'C:\Projects\tod\Tod.vcxproj'
 	namespaces = ['tod']
 	moduleNames = ['cppcli_blanket']
@@ -62,7 +62,7 @@ def main():
 
 		clas['projectname'] = 'tod'
 
-	f = open(r'.\templates\cppcli.pst', 'r')
+	f = open(r'..\templates\cppcli.pst', 'r')
 	template = f.read()
 	f.close()
 
