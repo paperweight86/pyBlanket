@@ -1,0 +1,29 @@
+PyBlanket
+
+CPP/CLI
+
+- Pointer lifetime wrapping
+- Factory pattern?
+- Array wrapping
+
+Tod Factory C#
+
+namespace Tod.Wrapper
+
+public static ref class TwoDRendererFactory
+{
+	public static bool Create( out I2DRenderer^ uiRdr, E2DRenderer type )
+	{
+		tod::I2DRenderer* pUIRdr = nullptr;
+		tod::E2DRenderer  todType = (tod::E2DRenderer )0;
+		switch(type)
+		{
+			case tod::E2DRenderer::Direct2D:
+				
+				break;
+		}
+		bool result = C2DRendererFactory.Create( &pUIRdr,  );
+
+		return result;
+	}
+}

@@ -8,7 +8,7 @@ pyBlanket using pyStache and dump but only generates a simple header file for C+
 
 # Next Steps
 Plan the pipeline steps and configuration.
-C++ -> [pyClump] -> Dump -> [pySharpBlanket] + Templates -> C++/CLI code -> [cmake??] -> C++/CLI project
+C++ -> [pyClump] -> Dump -> [pySharpBlanket] + Templates -> C++/CLI code -> [premake] -> C++/CLI project
 
 # Prerequisites
 - Python 2.7
