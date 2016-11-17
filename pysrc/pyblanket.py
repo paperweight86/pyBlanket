@@ -37,7 +37,7 @@ class Pipeline:
 
 def main():
 	dumpPath = r'..\examples\dump.cpp.json'
-	projPath = r'C:\Projects\tod\Tod.vcxproj'
+	projPath = r'C:\Users\paperweight\Source\Repos\Tod\Tod.vcxproj'
 	namespaces = ['tod']
 	moduleNames = ['cppcli_blanket']
 	modules = map(__import__, moduleNames)
